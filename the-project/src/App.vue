@@ -19,9 +19,12 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-html,body,h1,h2,h3,h4,h5,h6,p,ul,li,input,button {
+html,body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,input,button {
   margin: 0;
   padding: 0;
+}
+li {
+  list-style: none;
 }
 a{
   color: #000;
