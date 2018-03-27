@@ -1,17 +1,21 @@
 <template>
   <div class="chat-info">
     <img class="avator" src="../assets/avator.jpeg" alt="">
-    <p class="name">路边的蘑菇</p>
+    <p class="name">{{this.myself.name}}</p>
   </div>
 </template>
 <script>
+  import { mapGetters } from 'vuex'
   export default {
     name: 'ChatInfo',
     data: function() {
       return {
         msg: ''
       }
-    }
+    },
+    computed: mapGetters([
+      'myself'
+    ])
   }
 </script>
 <style scoped>

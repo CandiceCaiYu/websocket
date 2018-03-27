@@ -16,15 +16,7 @@
 </script>
 <style scoped>
   .chat-content-input {
-    position: absolute;
-    z-index: 10;
-    left: 0;
-    right: 0;
-    top: 500px;
-    margin: auto;
-    padding: 10px;
-    /* border: 1px solid #f00; */
-    height: 40px;
+    margin-top: 20px;
   }
   .chat-content-input-text {
     height: 40px;

@@ -35,8 +35,12 @@ export default {
           name: self.msg
         }
       }
+      self.websocket.send(JSON.stringify(data));
+      self.websocket.onmessage = function(message) {
+        var resultData = JSON.parse(message.data)
+        self.$store.dispatch('addUser',resultData)
 
-      self.websocket.send(JSON.stringify(data))
+      }
     },
     initWebSocket: function() {
       this.websocket = new WebSocket('ws://localhost:8081');

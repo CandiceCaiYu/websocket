@@ -6,18 +6,29 @@
    <div class="right">
      <ChatContent />
    </div>
+     <PromptBox :msg='this.myself.name' :show-prompt='true' />
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import ChatOnlineList from './ChatOnlineList'
 import ChatContent from './ChatContent'
+import PromptBox from './PromptBox'
   export default {
     name: 'ChatMain',
-    components: { ChatOnlineList, ChatContent },
+    components: { ChatOnlineList, ChatContent,PromptBox },
     data: function() {
       return {
-        msg: ''
+        message: ''
       }
+    },
+    computed:{
+      ...mapGetters([
+      'myself'
+    ]),
+    // info: ()=> {
+    //   return this.myself
+    //  }
     }
   }
 </script>
