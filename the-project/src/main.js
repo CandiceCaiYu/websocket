@@ -14,10 +14,10 @@ new Vue({
   template: '<App/>'
 })
 
-var ws = new WebSocket('ws://localhost:8081');
-ws.onopen = function() {
-  console.log('client connecting')
-}
-ws.onmessage = function(data) {
-  console.log(data)
-}
+// var ws = new WebSocket('ws://localhost:8081');
+// ws.onopen = function() {
+//   console.log('client connecting')
+// }
+// ws.onmessage = function(data) {
+//   console.log(data)
+// }

@@ -6,10 +6,10 @@
     <div class="container">
       <form action="">
         <div class="form-item">
- <label for="">姓名：</label>
-        <input type="text">
+          <label for="">姓名：</label>
+          <input type="text" v-model="msg">
         </div>
-        <button class="submit-btn"><router-link to="ChatMain">登录</router-link></button>
+        <button class="submit-btn" @click="sendMsg"><router-link to="ChatMain">登录</router-link></button>
       </form>
     </div>
   </div>
@@ -20,9 +20,29 @@ export default {
   name: 'Login',
   data () {
     return {
-      msg: 'Hello World'
+      msg: 'yoha',
+      websock: null,
+    }
+  },
+  mounted: function() {
+    this.initWebSocket();
+  },
+  methods: {
+    sendMsg: function() {
+      var self = this;
+      var data = {
+        loginInfo: {
+          name: self.msg
+        }
+      }
+
+      self.websocket.send(JSON.stringify(data))
+    },
+    initWebSocket: function() {
+      this.websocket = new WebSocket('ws://localhost:8081');
     }
   }
+  
 }
 </script>
 
