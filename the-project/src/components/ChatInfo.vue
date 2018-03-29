@@ -20,11 +20,13 @@
 </script>
 <style scoped>
   .chat-info {
+    text-align: left;
     background: #00afff;
   }
   .chat-info .avator {
     max-width: 70px;
     border-radius: 50%;
+    margin-right: 10px;
   }
   .chat-info .name {
     display: inline-block;

@@ -35,20 +35,20 @@ import PromptBox from './PromptBox'
 </script>
 <style scoped>
   .chat-main {
-    width: 900px;
+    width: 776px;
     height: 500px;
     margin: auto;
     background: #94debe;
   }
   .chat-main .left {
     display: inline-block;
-    width: 200px;
+    width: 170px;
     height: 100%;
     background: #73968752;
   }
   .chat-main .right {
     display: inline-block;
-    width: 690px;
+    width: 600px;
     height: 100%;
     vertical-align: top;
     background: #73968752;

@@ -88,5 +88,12 @@ a {
   border-radius: 4px;
   width: 80px;
   height: 30px;
+  line-height: 30px;
+}
+.submit-btn a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  
 }
 </style>

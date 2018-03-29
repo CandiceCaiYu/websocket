@@ -1,7 +1,7 @@
 <template>
   <div class="chat-content">
     <div class="chat-content-friend-name">{{$route.params.friendName}}</div>
-    <ul class="chat-content-panel" v-if="this.sendMsg.data.length > 0">
+    <ul class="chat-content-panel">
       <template v-for="item in this.sendMsg.data">
         <ChatContentFriend :key="item.chat.id" v-if="item.chat.friendMsg" :friendMsg="item.chat.friendMsg" />
         <ChatContentMyself :key="item.chat.id" v-if="item.chat.msg" :msg="item.chat.msg"/>

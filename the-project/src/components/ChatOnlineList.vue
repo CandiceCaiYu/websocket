@@ -14,7 +14,7 @@
           <img src="../assets/avator.jpeg" alt="">
           <div class="list-item-info">
             <p class="list-item-info-name">{{friend.name}}</p>
-            <p class="list-item-info-detail">233333.........</p>
+            <p class="list-item-info-detail">{{ gotMsg ? gotMsg.chat.friendMsg : ''}}</p>
           </div>
         </router-link>
       </li>
@@ -43,6 +43,7 @@
       ...mapGetters([
         'friends',
         'user',
+        'gotMsg'
       ]),
     },
   }
@@ -57,6 +58,7 @@
     height: auto;
     text-align: left;
     cursor: pointer;
+    overflow: hidden;
   }
   .list-item:hover {
     background: #ccc;

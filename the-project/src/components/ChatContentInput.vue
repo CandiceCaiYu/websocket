@@ -43,7 +43,7 @@ import { WEBSOCKET } from '../common/connect'
 </script>
 <style scoped>
   .chat-content-input {
-    margin-top: 20px;
+    margin-top: 10px;
   }
   .chat-content-input-text {
     height: 40px;
