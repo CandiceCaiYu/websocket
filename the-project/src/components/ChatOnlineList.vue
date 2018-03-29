@@ -2,25 +2,19 @@
   <div class="chat-online-list">
     <ChatInfo />
     <ul class="list">
-      <li class="list-item">
+      <!-- <li class="list-item">
         <img src="../assets/avator.jpeg" alt="">
         <div class="list-item-info">
           <p class="list-item-info-name">蘑菇蘑菇</p>
           <p class="list-item-info-detail">233333</p>
         </div>
-      </li>
-      <li class="list-item">
+      </li> -->
+
+      <li class="list-item" v-for="friend in this.friends" :key=friend.id>
         <img src="../assets/avator.jpeg" alt="">
         <div class="list-item-info">
-          <p class="list-item-info-name">蘑菇蘑菇</p>
+          <p class="list-item-info-name">{{friend.name}}</p>
           <p class="list-item-info-detail">233333.........</p>
-        </div>
-      </li>
-      <li class="list-item">
-        <img src="../assets/avator.jpeg" alt="">
-        <div class="list-item-info">
-          <p class="list-item-info-name">蘑菇蘑菇</p>
-          <p class="list-item-info-detail">233333</p>
         </div>
       </li>
     </ul>
@@ -28,15 +22,41 @@
 </template>
 
 <script>
+  import { mapState,mapGetters } from 'vuex'
   import ChatInfo from './ChatInfo.vue'
+  import { WEBSOCKET } from '../common/connect'
   export default {
     name: 'ChatOnlineList',
     components: { ChatInfo },
     data: function() {
       return {
-        msg: ''
+        msg: '',
+        websocket: null,
+        allUsers: null,
       }
-    }
+    },
+    mounted: () => {
+      this.websocket = WEBSOCKET
+    },
+    computed: {
+      ...mapGetters([
+        'friends'
+      ]),
+    },
+    // computed: {
+    // allUsers: () => {
+    //     return this.onlineUsers.data
+    //   }
+    // }
+    // computed: {
+    //   gotUsers: () => {
+    //     var self = this;
+    //     self.websocket.onmessage = function(message) {
+    //       allUsers = JSON.parse(message.data)
+    //       self.$store.dispatch('addUser',resultData)
+    //     }
+    //   }
+    // }
   }
 </script>
 

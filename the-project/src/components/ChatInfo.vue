@@ -1,11 +1,11 @@
 <template>
-  <div class="chat-info">
+  <div class="chat-info" :data = 'this.user'>
     <img class="avator" src="../assets/avator.jpeg" alt="">
-    <p class="name">{{this.myself.name}}</p>
+    <p class="name">{{this.user.name}}</p>
   </div>
 </template>
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapState } from 'vuex'
   export default {
     name: 'ChatInfo',
     data: function() {
@@ -14,7 +14,7 @@
       }
     },
     computed: mapGetters([
-      'myself'
+      'user'
     ])
   }
 </script>

@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import  { WEBSOCKET }  from '../common/connect'
 export default {
   name: 'Login',
   data () {
@@ -25,7 +26,7 @@ export default {
     }
   },
   mounted: function() {
-    this.initWebSocket();
+    this.websocket = WEBSOCKET;
   },
   methods: {
     sendMsg: function() {
@@ -39,12 +40,8 @@ export default {
       self.websocket.onmessage = function(message) {
         var resultData = JSON.parse(message.data)
         self.$store.dispatch('addUser',resultData)
-
       }
     },
-    initWebSocket: function() {
-      this.websocket = new WebSocket('ws://localhost:8081');
-    }
   }
   
 }

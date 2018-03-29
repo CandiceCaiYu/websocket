@@ -1,21 +1,41 @@
 var WebSocket = require('ws');
-var uuid = require('uuid/v3')
+var uuid = require('uuid/v4')
 var wss = new WebSocket.Server({ port: 8081 });
 var msg = {};
 var index = 0;
+var friends = [];
+var clients = [];
 wss.on('connection', function(ws) {
   console.log('Server connecting')
-  // ws.send(uuid('ws://localhost:8081', uuid.DNS))
   ws.on('message',function(message) {
-    var detail = JSON.parse(message)
+    var detail = JSON.parse(message);
+    var theId = uuid();
     msg = {
       name:detail.loginInfo.name ,
-      uid:uuid('ws://localhost:8081', uuid.DNS),
-      id: index++
+      id: theId,
     }
-    console.log(message)
-    ws.send(JSON.stringify(msg))
+    clients.push({
+      id: theId,
+      ws: ws
+    })
+    friends.push(msg)
+    var data = {
+      user: msg,
+      friends: friends
+    }
+    // ws.send(JSON.stringify(data))
+    sendMsg(data,clients)
   })
   
 })
+
+// 群发消息
+function sendMsg(data,clients,ws) {
+  for(let i=0, len=clients.length; i<len; i++) {
+    let clientSocket = clients[i].ws;
+    if(clientSocket.readyState === WebSocket.OPEN){
+      clientSocket.send(JSON.stringify( data ))
+    }
+  }
+}
 

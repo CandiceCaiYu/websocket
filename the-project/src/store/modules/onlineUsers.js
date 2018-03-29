@@ -1,11 +1,11 @@
 export default {
   // 初始数据
   state: {
-    users: []
+    data: null
   },
   mutations: {
     addUser(state, payload) {
-      state.users.push(payload)
+      state.data = payload
     }
   },
   actions: {
@@ -14,8 +14,11 @@ export default {
     }
   },
   getters: {
-   myself: state => {
-     return state.users.length > 0 ? state.users[0] : state.users
+   user: state => {
+     return state.data ? state.data.user : ''
+   },
+   friends: state => {
+     return state.data ? state.data.friends : ''
    }
   }
 }
