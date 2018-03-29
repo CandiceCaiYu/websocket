@@ -10,23 +10,50 @@ wss.on('connection', function(ws) {
   ws.on('message',function(message) {
     var detail = JSON.parse(message);
     var theId = uuid();
-    msg = {
-      name:detail.loginInfo.name ,
-      id: theId,
+    // 登录
+    if(detail.loginInfo) {
+      msg = {
+        name:detail.loginInfo.name ,
+        id: theId,
+      }
+      clients.push({
+        id: theId,
+        ws: ws
+      })
+      friends.push(msg)
+      var data = {
+        user: msg,
+        friends: friends
+      }
+      ws.send(JSON.stringify({
+        user: msg
+      }))
+      sendMsg(friends,clients)
     }
-    clients.push({
-      id: theId,
-      ws: ws
-    })
-    friends.push(msg)
-    var data = {
-      user: msg,
-      friends: friends
+    else if(detail.chat) {
+      console.log(clients.length)
+      for(let i=0, len=clients.length; i<len; i++) {
+        let clientSocket = clients[i].ws
+        if(clients[i].id === detail.chat.userId) {
+          clientSocket.send(JSON.stringify({
+            chat:detail.chat
+          }))
+        }else if(clients[i].id === detail.chat.friendId) {
+          let data = {
+            chat: {
+              userName: detail.chat.friendName,
+              userId:detail.chat.friendId,
+              friendName: detail.chat.userName,
+              friendId: detail.chat.userId,
+              friendMsg: detail.chat.msg
+            }
+           
+          }
+          clientSocket.send(JSON.stringify(data))
+        }
+      }
     }
-    ws.send(JSON.stringify({
-      user: msg
-    }))
-    sendMsg(friends,clients)
+    
   })
   
 })

@@ -1,13 +1,13 @@
 <template>
    <li class="chat-content-item-friend">
         <img class="chat-content-item-friend-avator" src="../assets/friend.jpg" alt="">
-        <div class="chat-content-item-friend-text"><span class="toggle"></span>Good morning!</div>
+        <div class="chat-content-item-friend-text"><span class="toggle"></span>{{friendMsg}}</div>
       </li>
 </template>
 <script>
   export default {
     name: 'ChatContentFriend',
-    props: ['gotMsg'],
+    props: ['friendMsg'],
     data: function() {
       return {
         msg: ''

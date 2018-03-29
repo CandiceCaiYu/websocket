@@ -2,8 +2,15 @@
   <div class="chat-online-list">
     <ChatInfo />
     <ul class="list">
-      <li class="list-item" v-for="friend in this.friends" :key=friend.id>
-        <router-link class="list-item-link" :to="{name:'ChatContent' , params:{userName:friend.name}}">
+      <li class="list-item" v-for="friend in this.friends" :key=friend.id v-if="friend.name != user.name">
+        <router-link class="list-item-link" :to="{
+          name:'ChatContent' , 
+          params:{
+            userName:user.name, 
+            userId:user.id,
+            friendName: friend.name,
+            friendId: friend.id
+            }}">
           <img src="../assets/avator.jpeg" alt="">
           <div class="list-item-info">
             <p class="list-item-info-name">{{friend.name}}</p>
@@ -34,7 +41,8 @@
     },
     computed: {
       ...mapGetters([
-        'friends'
+        'friends',
+        'user',
       ]),
     },
   }

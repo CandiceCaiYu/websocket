@@ -19,7 +19,7 @@ export default new Router({
       component: ChatMain,
       children: [
         {
-          path: 'ChatContent/:userName',
+          path: 'ChatContent/:friendName',
           name: 'ChatContent',
           components: {
             chatPanel: ChatContent

@@ -1,18 +1,14 @@
 <template>
    <li class="chat-content-item-myself">
-        <div class="chat-content-item-myself-text"><span class="toggle"></span> {{myMsg}}</div>
+        <div class="chat-content-item-myself-text"><span class="toggle"></span> {{msg}}</div>
         <img class="chat-content-item-myself-avator" src="../assets/avator.jpeg" alt="">
     </li>
 </template>
 <script>
   export default {
     name: 'ChatContentMyself',
-    props: ['myMsg'],
-    data: function() {
-      return {
-        msg: ''
-      }
-    }
+    props: ['msg'],
+  
   }
 </script>
 <style scoped>
