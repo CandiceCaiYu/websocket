@@ -4,39 +4,51 @@
      <ChatOnlineList />
    </div>
    <div class="right">
-     <ChatContent />
+     <!-- <ChatContent /> -->
+     <router-view name="chatPanel"></router-view>
    </div>
+     <!-- <PromptBox :msg='this.user.name' :show-prompt='true' /> -->
   </div>
 </template>
 <script>
+import { mapGetters, mapState } from 'vuex'
 import ChatOnlineList from './ChatOnlineList'
 import ChatContent from './ChatContent'
+import PromptBox from './PromptBox'
   export default {
     name: 'ChatMain',
-    components: { ChatOnlineList, ChatContent },
+    components: { ChatOnlineList, ChatContent,PromptBox },
     data: function() {
       return {
-        msg: ''
+        message: ''
       }
+    },
+    computed:{
+      ...mapGetters([
+      'user'
+    ]),
+    // info: ()=> {
+    //   return this.myself
+    //  }
     }
   }
 </script>
 <style scoped>
   .chat-main {
-    width: 900px;
+    width: 776px;
     height: 500px;
     margin: auto;
     background: #94debe;
   }
   .chat-main .left {
     display: inline-block;
-    width: 200px;
+    width: 170px;
     height: 100%;
     background: #73968752;
   }
   .chat-main .right {
     display: inline-block;
-    width: 690px;
+    width: 600px;
     height: 100%;
     vertical-align: top;
     background: #73968752;

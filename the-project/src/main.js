@@ -3,21 +3,22 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import store from './store'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
 
-var ws = new WebSocket('ws://localhost:8081');
-ws.onopen = function() {
-  console.log('client connecting')
-}
-ws.onmessage = function(data) {
-  console.log(data)
-}
+// var ws = new WebSocket('ws://localhost:8081');
+// ws.onopen = function() {
+//   console.log('client connecting')
+// }
+// ws.onmessage = function(data) {
+//   console.log(data)
+// }

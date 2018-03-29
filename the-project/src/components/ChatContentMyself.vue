@@ -1,17 +1,14 @@
 <template>
    <li class="chat-content-item-myself">
-        <div class="chat-content-item-myself-text"><span class="toggle"></span> 拉萨进了房间爱丽丝flak圣诞节放假了咯开始拉萨的就flak是靠近对方拉数据都快放假啊</div>
+        <div class="chat-content-item-myself-text"><span class="toggle"></span> {{msg}}</div>
         <img class="chat-content-item-myself-avator" src="../assets/avator.jpeg" alt="">
     </li>
 </template>
 <script>
   export default {
     name: 'ChatContentMyself',
-    data: function() {
-      return {
-        msg: ''
-      }
-    }
+    props: ['msg'],
+  
   }
 </script>
 <style scoped>

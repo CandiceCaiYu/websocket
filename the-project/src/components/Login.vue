@@ -6,23 +6,44 @@
     <div class="container">
       <form action="">
         <div class="form-item">
- <label for="">姓名：</label>
-        <input type="text">
+          <label for="">姓名：</label>
+          <input type="text" v-model="msg">
         </div>
-        <button class="submit-btn"><router-link to="ChatMain">登录</router-link></button>
+        <button class="submit-btn" @click="sendMsg"><router-link to="ChatMain">登录</router-link></button>
       </form>
     </div>
   </div>
 </template>
 
 <script>
+import  { WEBSOCKET }  from '../common/connect'
 export default {
   name: 'Login',
   data () {
     return {
-      msg: 'Hello World'
+      msg: 'yoha',
+      websock: null,
     }
+  },
+  mounted: function() {
+    this.websocket = WEBSOCKET;
+  },
+  methods: {
+    sendMsg: function() {
+      var self = this;
+      var data = {
+        loginInfo: {
+          name: self.msg
+        }
+      }
+      self.websocket.send(JSON.stringify(data));
+      self.websocket.onmessage = function(message) {
+        var resultData = JSON.parse(message.data)
+        self.$store.dispatch('addUser',resultData)
+      }
+    },
   }
+  
 }
 </script>
 
@@ -67,5 +88,12 @@ a {
   border-radius: 4px;
   width: 80px;
   height: 30px;
+  line-height: 30px;
+}
+.submit-btn a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  
 }
 </style>
