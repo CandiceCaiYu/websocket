@@ -23,18 +23,20 @@ wss.on('connection', function(ws) {
       user: msg,
       friends: friends
     }
-    // ws.send(JSON.stringify(data))
-    sendMsg(data,clients)
+    ws.send(JSON.stringify({
+      user: msg
+    }))
+    sendMsg(friends,clients)
   })
   
 })
 
 // 群发消息
-function sendMsg(data,clients,ws) {
+function sendMsg(friends,clients,ws) {
   for(let i=0, len=clients.length; i<len; i++) {
     let clientSocket = clients[i].ws;
     if(clientSocket.readyState === WebSocket.OPEN){
-      clientSocket.send(JSON.stringify( data ))
+      clientSocket.send(JSON.stringify( {friends : friends} ))
     }
   }
 }

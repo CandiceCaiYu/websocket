@@ -1,11 +1,19 @@
 export default {
   // 初始数据
   state: {
-    data: null
+    data: {
+      user: {},
+      friends: []
+    }
   },
   mutations: {
     addUser(state, payload) {
-      state.data = payload
+      if(payload.friends) {
+        state.data.friends = payload.friends
+      }
+      if(payload.user) {
+        state.data.user = payload.user
+      }
     }
   },
   actions: {
@@ -15,10 +23,10 @@ export default {
   },
   getters: {
    user: state => {
-     return state.data ? state.data.user : ''
+     return state.data.user ? state.data.user : ''
    },
    friends: state => {
-     return state.data ? state.data.friends : ''
+     return state.data.friends ? state.data.friends : ''
    }
   }
 }

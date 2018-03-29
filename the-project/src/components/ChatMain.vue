@@ -6,7 +6,7 @@
    <div class="right">
      <ChatContent />
    </div>
-     <PromptBox :msg='this.user.name' :show-prompt='true' />
+     <!-- <PromptBox :msg='this.user.name' :show-prompt='true' /> -->
   </div>
 </template>
 <script>
