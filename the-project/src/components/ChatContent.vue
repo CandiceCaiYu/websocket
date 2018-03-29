@@ -1,15 +1,8 @@
 <template>
   <div class="chat-content">
-    <div class="chat-content-friend-name">Candice</div>
+    <div class="chat-content-friend-name">{{$route.params.userName}}</div>
     <ul class="chat-content-panel">
-     <ChatContentFriend />
-     <ChatContentMyself />
-      <ChatContentFriend />
-     <ChatContentMyself />
-      <ChatContentFriend />
-     <ChatContentMyself />
-      <ChatContentFriend />
-     <ChatContentMyself />
+    
     </ul>
     <ChatContentInput />
   </div>
@@ -33,6 +26,11 @@
     margin-top: 20px;
     height: 360px;
     overflow: auto;
+  }
+  .chat-content-friend-name {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
   }
  
 </style>

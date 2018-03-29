@@ -4,7 +4,8 @@
      <ChatOnlineList />
    </div>
    <div class="right">
-     <ChatContent />
+     <!-- <ChatContent /> -->
+     <router-view name="chatPanel"></router-view>
    </div>
      <!-- <PromptBox :msg='this.user.name' :show-prompt='true' /> -->
   </div>

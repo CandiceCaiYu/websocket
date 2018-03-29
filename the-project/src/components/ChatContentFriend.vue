@@ -7,6 +7,7 @@
 <script>
   export default {
     name: 'ChatContentFriend',
+    props: ['gotMsg'],
     data: function() {
       return {
         msg: ''
